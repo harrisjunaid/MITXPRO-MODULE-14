@@ -1,27 +1,20 @@
-// use of "props" to set data
-function NavBar(props) {
-  const [clicks, setClicks] = React.useState([]);
-  console.log(`clicks: ${clicks}`);
-  alert(`Rendering NavBar`);
-  const list = props.menuitems;
-  const { Button } = ReactBootstrap;
-  // each item should have an unique key
-  const handleClick = e => {
-    console.log(`clicked on: ${e.target.innerHTML}`);
-    setClicks([...clicks, e.target.innerHTML]);
-  };
-  const updatedList = list.map((listItems, index) => {
-    return (
-      <Button onClick={handleClick} key={index}>
-        {listItems}
-      </Button>
-    );
+// Ex 2 - remove any item from navbar with less than minStock in stock
+// write out both the name and the number in stock in format apple:2
+function NavBar({ menuitems, minstock }) {
+  const updatedList = menuitems.map((item, index) => {
+    return <li key={index}>{item.name}</li>;
   });
   // note that React needs to have a single Parent
-  return <ul>{updatedList}</ul>;
+  return <ul style={{ listStyleType: "none" }}>{updatedList}</ul>;
 }
-const menuItems = [1, 2, 3, 4, 5];
+const menuItems = [
+  { name: "apple", instock: 2 },
+  { name: "pineapple", instock: 3 },
+  { name: "pear", instock: 0 },
+  { name: "peach", instock: 3 },
+  { name: "orange", instock: 1 }
+];
 ReactDOM.render(
-  <NavBar menuitems={menuItems} />,
+  <NavBar menuitems={menuItems} minstock={2} />,
   document.getElementById("root")
 );
