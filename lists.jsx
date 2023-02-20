@@ -1,10 +1,14 @@
 // use of "props" to set data
 function NavBar(props) {
+  const [clicks, setClicks] = React.useState([]);
+  console.log(`clicks: ${clicks}`);
+  alert(`Rendering NavBar`);
   const list = props.menuitems;
   const { Button } = ReactBootstrap;
   // each item should have an unique key
   const handleClick = e => {
-    alert(`you clicked ${e.target.innerHTML}`);
+    console.log(`clicked on: ${e.target.innerHTML}`);
+    setClicks([...clicks, e.target.innerHTML]);
   };
   const updatedList = list.map((listItems, index) => {
     return (
