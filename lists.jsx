@@ -1,6 +1,8 @@
 // use of "props" to set data
-function NavBar(props) {
-  const list = props.menuitems;
+function NavBar() {
+  const [menuItems, setMenuItems] = React.useState([1, 2, 3, 4, 5]);
+
+  const list = menuItems;
   const { Button } = ReactBootstrap;
   // each item should have an unique key
   const handleClick = e => {
@@ -16,8 +18,7 @@ function NavBar(props) {
   // note that React needs to have a single Parent
   return <ul>{updatedList}</ul>;
 }
-const menuItems = [1, 2, 3, 4, 5];
 ReactDOM.render(
-  <NavBar menuitems={menuItems} />,
+  <NavBar  />,
   document.getElementById("root")
 );
