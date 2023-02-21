@@ -249,15 +249,17 @@ function App(){
 	  setTodos(temp);
 	}
   
-	return(
-	  <div className="app">
-		<div className="todo-list" >
+  return (
+    <>
+	  {/* <div className="app"> */}
+      <div className="d-flex flex-md-column " >
 		  {todos.map((todo, i) => (
 			<Todo key={i} index={i} todo={todo} remove={removeTodo}/>
 		  ))}
 		  <TodoForm addTodo={addTodo} />
 		</div>
-	  </div>
+      {/* </div> */}
+    </>
 	);
   }
   
